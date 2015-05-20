@@ -35,6 +35,12 @@ Options:
 
 - directory (required)
     - directory contains `run` file. This directory is symlinked. 
+- service_dir (option)
+    - directory that svscan monitors. default is `/service`
+- svc_command (option)
+    - the path of the svc command. default is `svc`
+- svstat_command (option)
+    - the path of the svstat command. default is `svstat`
 
 ## Acknowledgement
 
