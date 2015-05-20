@@ -33,10 +33,8 @@ end
 
 Options:
 
-- service_dir (optional)
-    - directory that svscan monitors. default is `/service`
 - directory (required)
-    - directory contains `run` file. The basename is used to link to `/service/#{basename(directory)}`
+    - directory contains `run` file. This directory is symlinked. 
 
 ## Acknowledgement
 
