@@ -16,71 +16,71 @@ execute "start svscan" do
   not_if "initctl status svscan | grep running"
 end
 
-# sync test scripts
 directory "/tmp/service"
 
-remote_directory "/tmp/service/test/" do
-  source "files/tmp/service/test/"
-end
+%w[with_log without_log].each do |_service|
+  # sync test scripts
+  remote_directory "/tmp/service/#{_service}/" do
+    source "files/tmp/service/#{_service}/"
+  end
 
-# tests
+  daemontools_service "#{_service}" do
+    directory "/tmp/service/#{_service}"
+    action [:enable]
+  end
 
-daemontools_service "test" do
-  directory "/tmp/service/test"
-  action [:enable]
-end
+  daemontools_service "#{_service}" do
+    directory "/tmp/service/#{_service}"
+    action [:enable]
+  end
 
-daemontools_service "test" do
-  directory "/tmp/service/test"
-  action [:enable]
-end
+  daemontools_service "#{_service}" do
+    directory "/tmp/service/#{_service}"
+    action [:start]
+  end
 
-daemontools_service "test" do
-  directory "/tmp/service/test"
-  action [:start]
-end
+  daemontools_service "#{_service}" do
+    directory "/tmp/service/#{_service}"
+    action [:start]
+  end
 
-daemontools_service "test" do
-  directory "/tmp/service/test"
-  action [:start]
-end
+  daemontools_service "#{_service}" do
+    directory "/tmp/service/#{_service}"
+    action [:reload]
+  end
 
-daemontools_service "test" do
-  directory "/tmp/service/test"
-  action [:reload]
-end
+  daemontools_service "#{_service}" do
+    directory "/tmp/service/#{_service}"
+    action [:reload]
+  end
 
-daemontools_service "test" do
-  directory "/tmp/service/test"
-  action [:reload]
-end
+  daemontools_service "#{_service}" do
+    directory "/tmp/service/#{_service}"
+    action [:stop]
+  end
 
-daemontools_service "test" do
-  directory "/tmp/service/test"
-  action [:stop]
-end
+  daemontools_service "#{_service}" do
+    directory "/tmp/service/#{_service}"
+    action [:stop]
+  end
 
-daemontools_service "test" do
-  directory "/tmp/service/test"
-  action [:stop]
-end
+  daemontools_service "#{_service}" do
+    directory "/tmp/service/#{_service}"
+    action [:restart]
+  end
 
-daemontools_service "test" do
-  directory "/tmp/service/test"
-  action [:restart]
-end
+  daemontools_service "#{_service}" do
+    directory "/tmp/service/#{_service}"
+    action [:restart]
+  end
 
-daemontools_service "test" do
-  directory "/tmp/service/test"
-  action [:restart]
-end
+  daemontools_service "#{_service}" do
+    directory "/tmp/service/#{_service}"
+    action [:disable]
+  end
 
-daemontools_service "test" do
-  directory "/tmp/service/test"
-  action [:disable]
-end
-
-daemontools_service "test" do
-  directory "/tmp/service/test"
-  action [:disable]
+  daemontools_service "#{_service}" do
+    directory "/tmp/service/#{_service}"
+    action [:disable]
+  end
 end

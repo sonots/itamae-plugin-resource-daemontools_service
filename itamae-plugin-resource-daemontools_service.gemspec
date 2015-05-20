@@ -21,4 +21,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "rspec"
   spec.add_dependency "itamae"
+  spec.add_dependency "specinfra", ">= 2.34.0"
 end
